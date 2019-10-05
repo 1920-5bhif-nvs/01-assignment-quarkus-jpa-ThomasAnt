@@ -44,10 +44,26 @@ public class GraveyardEndpoint {
         return Response.ok().entity(graveyard).build();
     }
 
+    @PUT
+    @Path("/update")
+    @Transactional
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(Graveyard g){
+        if(g != null) {
+            System.out.println(g.getArea());
+            System.out.println(g.getId());
+            service.update(g);
+            return Response.ok().build();
+        }
+        return Response.status(404).build();
+    }
+
     @DELETE
     @Path("/delete/{id}")
     public  Response delete(@PathParam("id")long id){
         try{
+            System.out.println(id);
             service.delete(id);
             return Response.ok().build();
         }

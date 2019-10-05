@@ -22,9 +22,13 @@ public class GraveyardService {
     }
 
     public void delete(long id){
+        System.out.println(id);
         Graveyard g = em.find(Graveyard.class,id);
-        System.out.println(g.getId() + g.getLocation());
+        System.out.println(g.getId() + g.getLocation() + g.getArea() + g.getNumberOfGraves());
         em.remove(g);
+    }
+    public void update(Graveyard g){
+        em.merge(g);
     }
 
     public void add(Graveyard g){
