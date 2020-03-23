@@ -1,5 +1,6 @@
 package at.htl.bussines;
 
+import at.htl.model.Grave;
 import at.htl.model.Graveyard;
 import io.quarkus.runtime.StartupEvent;
 
@@ -21,5 +22,10 @@ public class InitBean {
         em.persist(graveyard);
         Graveyard graveyard2 = new Graveyard(200,"Leonding",20);
         em.persist(graveyard2);
+
+        Grave g = new Grave("Musterman",graveyard);
+        em.persist(g);
+        Grave g2 = new Grave("Musterfrau",graveyard);
+        em.persist(g2);
     }
 }
